@@ -1,0 +1,6 @@
+{
+  "name": "RoleFit - AI CV & Resume Tailoring Engine",
+  "description": "AI-powered CV tailoring tool that analyzes job descriptions, calculates match scores, maps skill gaps, and generates honest, zero-hallucination tailored resumes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

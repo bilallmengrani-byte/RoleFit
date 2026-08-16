@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-paper: #F7F5F0;
+    --bg-surface: #FFFFFF;
+    --bg-surface-warm: #F2EFE9;
+    --ink-primary: #121316;
+    --ink-muted: #575A65;
+    --ink-faint: #8E929E;
+    --border-hairline: #E2DDD5;
+    --border-strong: #121316;
+    --accent-terracotta: #C84B31;
+    --accent-terracotta-hover: #AF3E26;
+    --accent-terracotta-faint: #FAF0ED;
+    --accent-cobalt: #16425B;
+    --accent-emerald: #2A6F56;
+  }
+
+  body {
+    background-color: var(--bg-paper);
+    color: var(--ink-primary);
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .font-serif-editorial {
+    font-family: 'Newsreader', Georgia, serif;
+  }
+
+  .font-mono-code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-sans-ui {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Editorial subtle paper grid / line accents */
+.bg-grid-paper {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(226, 221, 213, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 221, 213, 0.4) 1px, transparent 1px);
+}
+
+.editorial-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2DDD5;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(18, 19, 22, 0.03);
+  transition: border-color 0.15s ease;
+}
+
+.editorial-card-warm {
+  background-color: #FBF9F5;
+  border: 1px solid #E2DDD5;
+  border-radius: 2px;
+}
+
+.editorial-btn-primary {
+  background-color: #121316;
+  color: #F7F5F0;
+  border: 1px solid #121316;
+  border-radius: 2px;
+  transition: all 0.15s ease-in-out;
+}
+
+.editorial-btn-primary:hover {
+  background-color: #C84B31;
+  border-color: #C84B31;
+  color: #FFFFFF;
+}
+
+.editorial-btn-accent {
+  background-color: #C84B31;
+  color: #FFFFFF;
+  border: 1px solid #C84B31;
+  border-radius: 2px;
+  transition: all 0.15s ease-in-out;
+}
+
+.editorial-btn-accent:hover {
+  background-color: #AF3E26;
+  border-color: #AF3E26;
+}
+
+.editorial-btn-outline {
+  background-color: #FFFFFF;
+  color: #121316;
+  border: 1px solid #D5CFC5;
+  border-radius: 2px;
+  transition: all 0.15s ease-in-out;
+}
+
+.editorial-btn-outline:hover {
+  background-color: #F2EFE9;
+  border-color: #121316;
+}
+
+/* Subtle, Tasteful Animations */
+@keyframes editorialFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scoreBarFill {
+  from {
+    width: 0%;
+  }
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes uploadHighlight {
+  0% {
+    border-color: #C84B31;
+    background-color: #FAF0ED;
+  }
+  100% {
+    border-color: #B5AEA1;
+    background-color: #FAF8F5;
+  }
+}
+
+.animate-editorial-fade {
+  animation: editorialFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-score-fill {
+  animation: scoreBarFill 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-subtle-pulse {
+  animation: subtlePulse 1.8s infinite ease-in-out;
+}
+
+.animate-upload-success {
+  animation: uploadHighlight 0.8s ease-out forwards;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Print Rules for High-End PDF Generation */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 10.5pt;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .no-print, header, footer, .no-print-area, nav {
+    display: none !important;
+  }
+
+  .cv-page-container, .resume-paper-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    background: #FFFFFF !important;
+  }
+
+  @page {
+    margin: 1.2cm 1.2cm 1.2cm 1.2cm;
+    size: letter portrait;
+  }
+}
